@@ -25,17 +25,44 @@ const AppProvider = ({ children }) => {
      return item.amount = 1
    })
         dispatch({type: 'SHOW_DATA', payload:cart})
-        console.log(cart)
   }
+
+  const clearCart = () => {
+    dispatch({type: 'CLEAR_CART'})
+  }
+
+    const deleteItem = (id) => {
+      console.log('as')
+    dispatch({type: 'DELETE_ITEM', payload: id})
+  }
+  
+
+  const increase = (id) => {
+    dispatch({type: 'INCREASE', payload: id})
+  }
+
+   const decrease = (id) => {
+    dispatch({type: 'DECREASE', payload: id})
+  }
+
 
   useEffect(() => {
   fetchData()
   }, [])
 
+      useEffect(() => {
+    dispatch({ type: 'GET_TOTALS' })
+  }, [state.cart])
+
+
   return (
     <AppContext.Provider
       value={{
-  ...state
+  ...state,
+  clearCart,
+  deleteItem,
+  increase,
+  decrease
       }}
     >
       {children}

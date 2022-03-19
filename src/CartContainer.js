@@ -5,15 +5,17 @@ import CartItem from './CartItem';
 
 
 const CartContainer = () => {
-    const {cart} = useGlobalContext()
+    const {cart, total, clearCart} = useGlobalContext()
     return (
         <>
-           {cart.map((item)=> {
- return <CartItem {...item }/>
-           })}
-        <div>
-            <button className='clear' onClick={() => console.log('poo')}>clear</button>
+         <div>
+            <button className='clear' onClick={clearCart}>clear</button>
+            <div className='total'> total price: {total}</div>
         </div>
+           {cart.map((item)=> {
+ return <CartItem key={item.id} {...item }/>
+           })}
+       
         </>
     )
     

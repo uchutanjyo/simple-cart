@@ -4,10 +4,14 @@ import './styles/App.css';
 
 
 const Navbar = () => {
+  const {amount} = useGlobalContext()
     return (
-      <navbar>
+      <nav>
           SHOPPING FOR..SOMETIN!!
-      </navbar>
+          <div>Items in cart: {amount}</div>
+      </nav>
+
+
     )
 }
 
